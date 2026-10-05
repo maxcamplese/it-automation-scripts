@@ -1,0 +1,10 @@
+Network check (2026-10-05 13:07)
+
+  [PASS] This computer is connected to a network.
+  [PASS] The router answered.
+  [PASS] The internet is reachable.
+  [FAIL] Website names cannot be looked up (DNS failed for does-not-exist.invalid).
+         What this means: Check the spelling. If it is right, the domain's DNS records may be missing or expired. Try again without NET_CHECK_DOMAIN to test DNS in general.
+  [SKIP] Secure website check skipped because DNS failed.
+
+Result: 1 check(s) failed. Start with the first [FAIL] above; it usually explains the rest.

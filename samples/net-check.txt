@@ -1,0 +1,14 @@
+Network check (2026-10-05 11:51)
+
+  [PASS] This computer is connected to a network.
+         Default gateway: 203.0.113.x
+  [WARN] The router did not answer a ping.
+         What this means: Many networks block ping on purpose. If the checks below pass, ignore this.
+  [PASS] The internet is reachable.
+         Pinged 203.0.113.x
+  [PASS] Website names are being looked up correctly (DNS works).
+         example.com resolved to 203.0.113.x
+         DNS servers in use: 203.0.113.x 203.0.113.x 
+  [PASS] Secure websites load.
+
+Result: everything looks fine. If one site still will not load, the problem is probably that site.
