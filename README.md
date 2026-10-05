@@ -7,13 +7,13 @@ Small Bash and Python scripts for everyday IT support and systems work. They che
 | Script | What it does | Language |
 |---|---|---|
 | [`scripts/net-check.sh`](scripts/net-check.sh) | Tests the network, router, internet, DNS, and HTTPS in order, then explains any failure in plain language | Bash |
-| [`scripts/wifi-summary.sh`](scripts/wifi-summary.sh) | Reports signal, noise, band, and security for the current Wi-Fi connection, with a verdict on each | Bash (macOS) |
+| [`scripts/wifi-summary.sh`](scripts/wifi-summary.sh) | Reports signal, noise, band, and security for the current Wi-Fi connection, with plain-language verdicts on signal, interference, and band, and a warning for open or WEP networks | Bash (macOS) |
 | [`scripts/api_validator.py`](scripts/api_validator.py) | Pulls records from a REST API and checks each one against rules in a JSON file (required fields, types, formats, uniqueness) | Python |
 | [`scripts/uptime_report.py`](scripts/uptime_report.py) | Reads public status pages (Slack, GitHub, Atlassian, Cloudflare), writes a Markdown summary, and tracks uptime across runs | Python |
 
 ## Setup
 
-Requirements: macOS or Linux, Bash, and Python 3.9 or newer. There are no third-party packages; everything uses the standard library.
+Requirements: macOS or Linux, Bash, and Python 3.9 or newer (tested locally on 3.9 and 3.13; CI tests 3.12 and 3.14). There are no third-party packages; everything uses the standard library.
 
 ```bash
 git clone https://github.com/maxcamplese/it-automation-scripts.git
@@ -31,16 +31,21 @@ chmod +x scripts/*.sh
 NET_CHECK_DOMAIN=yourcompany.com ./scripts/net-check.sh   # test a specific domain
 ```
 
-Sample output (IP addresses replaced): [`samples/net-check.txt`](samples/net-check.txt). A run against a domain that does not exist shows the failure path: [`samples/net-check-dns-failure.txt`](samples/net-check-dns-failure.txt).
+Sample output (run with `--details`, IP addresses replaced): [`samples/net-check.txt`](samples/net-check.txt). A run against a domain that does not exist shows the failure path: [`samples/net-check-dns-failure.txt`](samples/net-check-dns-failure.txt).
 
 ```
   [PASS] This computer is connected to a network.
-  [WARN] The router did not answer a ping.
-         What this means: Many networks block ping on purpose. If the checks below pass, ignore this.
+         Default gateway: 203.0.113.x
+  [PASS] The router answered.
   [PASS] The internet is reachable.
-  [PASS] Website names are being looked up correctly (DNS works).
+         Pinged 203.0.113.x
+  [PASS] Website names are being looked up correctly (DNS works for example.com).
+         example.com resolved to 203.0.113.x
+         DNS servers in use: 203.0.113.x 203.0.113.x
   [PASS] Secure websites load.
 ```
+
+On networks that block ping, such as many campus and office networks, the router check shows `[WARN]` instead of failing, because the later checks decide.
 
 ### wifi-summary.sh
 
@@ -76,7 +81,7 @@ Add `--json` for machine-readable output, or use `--file saved.json` to validate
 python3 scripts/uptime_report.py
 ```
 
-Each run appends to `output/uptime_history.csv` and writes `output/uptime-report.md`. Run it on a schedule (for example with `cron`) to build an uptime trend. To add a service, add an entry to [`config/status_pages.json`](config/status_pages.json). Sample: [`samples/uptime-report.md`](samples/uptime-report.md).
+Each run appends to `output/uptime_history.csv` and writes `output/uptime-report.md`. Run it on a schedule (for example with `cron`) to build an uptime trend. The default paths are relative to the repo folder, so a cron entry should `cd` there first: `cd /path/to/it-automation-scripts && python3 scripts/uptime_report.py`. To add a service, add an entry to [`config/status_pages.json`](config/status_pages.json). Sample: [`samples/uptime-report.md`](samples/uptime-report.md).
 
 ## Tests
 

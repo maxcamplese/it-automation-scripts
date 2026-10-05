@@ -17,7 +17,7 @@
 #   ./scripts/net-check.sh --help
 #   NET_CHECK_DOMAIN=yourcompany.com ./scripts/net-check.sh   # test a specific domain
 #
-# Exit codes: 0 = everything passed, 1 = at least one check failed.
+# Exit codes: 0 = everything passed, 1 = at least one check failed, 2 = unknown option.
 # Works on macOS and Linux. Uses only built-in tools (ping, curl, dig or nslookup).
 
 set -u
