@@ -1,0 +1,13 @@
+{
+  "description": "Rules for a user directory feed, as if it were about to be loaded into an HR or CRM system. Phone numbers must be in one consistent format so they sync cleanly.",
+  "unique": ["id", "email", "username"],
+  "fields": {
+    "id": {"required": true, "type": "integer"},
+    "name": {"required": true, "type": "string", "min_length": 2},
+    "username": {"required": true, "type": "string", "pattern": "^[A-Za-z0-9_.]{3,30}$"},
+    "email": {"required": true, "type": "string", "pattern": "^[^@\\s]+@[^@\\s]+\\.[A-Za-z]{2,}$"},
+    "phone": {"required": true, "type": "string", "pattern": "^\\d{3}-\\d{3}-\\d{4}$"},
+    "address.zipcode": {"required": true, "type": "string", "pattern": "^\\d{5}(-\\d{4})?$"},
+    "company.name": {"required": true, "type": "string"}
+  }
+}

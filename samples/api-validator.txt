@@ -1,0 +1,17 @@
+Validation report for https://jsonplaceholder.typicode.com/users
+  Records checked: 10
+  Records passing: 1
+  Records failing: 9
+  Total problems:  9
+
+Problems by field:
+  phone (9)
+    - id 1: phone '1-770-736-8031 x56442' does not match the expected format
+    - id 2: phone '010-692-6593 x09125' does not match the expected format
+    - id 3: phone '1-463-123-4447' does not match the expected format
+    - id 4: phone '493-170-9623 x156' does not match the expected format
+    - id 5: phone '(254)954-1289' does not match the expected format
+    - id 6: phone '1-477-935-8478 x6430' does not match the expected format
+    - id 7: phone '210.067.6132' does not match the expected format
+    - id 8: phone '586.493.6943 x140' does not match the expected format
+    - id 9: phone '(775)976-6794 x41206' does not match the expected format
