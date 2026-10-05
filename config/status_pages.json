@@ -1,0 +1,8 @@
+{
+  "services": [
+    {"name": "Slack", "kind": "slack", "url": "https://slack-status.com/api/v2.0.0/current"},
+    {"name": "GitHub", "kind": "statuspage", "url": "https://www.githubstatus.com/api/v2/summary.json"},
+    {"name": "Atlassian (Jira, Confluence)", "kind": "statuspage", "url": "https://status.atlassian.com/api/v2/summary.json"},
+    {"name": "Cloudflare", "kind": "statuspage", "url": "https://www.cloudflarestatus.com/api/v2/summary.json"}
+  ]
+}
