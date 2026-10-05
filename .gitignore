@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local output and history (may contain details about your network)
+output/
+*.log
+uptime_history.csv
+
+# Secrets: never commit these
+.env
+*.pem
+*.key
+
+# macOS
+.DS_Store
