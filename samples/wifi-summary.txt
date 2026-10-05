@@ -1,0 +1,12 @@
+Wi-Fi summary (2026-10-05 15:57)
+
+  Network:        (hidden by macOS; allow Location Services for Terminal to show it)
+  Standard:       802.11ax
+  Channel/band:   117 (6GHz, 80MHz)
+  Security:       WPA2 Enterprise
+  Link speed:     1080 Mbps
+  Signal / noise: -51 dBm / -93 dBm
+
+  Signal: strong. Video calls and large downloads should work well.
+  Interference: low (SNR 42 dB).
+  Band: 6 GHz. Fastest and least crowded, but shorter range through walls.
